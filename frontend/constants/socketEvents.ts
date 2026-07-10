@@ -1,0 +1,14 @@
+export const SOCKET_EVENTS = {
+  CONNECTION: 'connection',
+  DISCONNECT: 'disconnect',
+  JOIN_ROOM: 'join_room',
+  LEAVE_ROOM: 'leave_room',
+  SEND_MESSAGE: 'send_message',
+  RECEIVE_MESSAGE: 'receive_message',
+  TYPING: 'typing',
+  STOP_TYPING: 'stop_typing',
+  MESSAGE_DELIVERED: 'message_delivered',
+  MESSAGE_SEEN: 'message_seen',
+  USER_ONLINE: 'user_online',
+  USER_OFFLINE: 'user_offline',
+} as const;
