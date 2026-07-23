@@ -30,7 +30,6 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
-      {/* Navigation Header */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-border/40 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-violet-500 flex items-center justify-center shadow-md">
