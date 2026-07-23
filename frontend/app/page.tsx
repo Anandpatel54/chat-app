@@ -29,13 +29,13 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
+    <div className="flex flex-col min-h-screen bg-linear-to-br from-background via-background to-muted/30">
       <header className="flex items-center justify-between px-6 py-4 border-b border-border/40 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-violet-500 flex items-center justify-center shadow-md">
+          <div className="w-10 h-10 rounded-xl bg-linear-to-tr from-primary to-violet-500 flex items-center justify-center shadow-md">
             <MessageSquare className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+          <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-r from-foreground to-foreground/80">
             ChatApp
           </span>
         </div>
@@ -51,7 +51,7 @@ export default function LoginPage() {
             onClick={loginWithGoogle}
             className={cn(
               buttonVariants(),
-              "bg-gradient-to-r from-primary to-violet-600 hover:from-primary/90 hover:to-violet-600/90 text-white shadow-lg cursor-pointer"
+              "bg-linear-to-r from-primary to-violet-600 hover:from-primary/90 hover:to-violet-600/90 text-white shadow-lg cursor-pointer"
             )}
           >
             Sign Up
@@ -68,7 +68,7 @@ export default function LoginPage() {
           className="w-full max-w-md p-8 rounded-3xl border border-border/40 bg-card/60 backdrop-blur-md shadow-2xl space-y-8"
         >
           <div className="flex flex-col items-center text-center space-y-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-violet-500 flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 rounded-2xl bg-linear-to-tr from-primary to-violet-500 flex items-center justify-center shadow-lg">
               <MessageSquare className="w-8 h-8 text-white" />
             </div>
             <div className="space-y-1.5">

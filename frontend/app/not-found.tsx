@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { MessageSquare, AlertCircle } from 'lucide-react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import {  AlertCircle } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
 
 export default function NotFoundPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-background via-background to-muted/30 px-4 text-center">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-linear-to-br from-background via-background to-muted/30 px-4 text-center">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -31,7 +31,7 @@ export default function NotFoundPage() {
           href="/home"
           className={cn(
             buttonVariants({ size: 'lg' }),
-            "w-full bg-gradient-to-r from-primary to-violet-600 text-white"
+            "w-full bg-linear-to-r from-primary to-violet-600 text-white"
           )}
         >
           Back to Home
