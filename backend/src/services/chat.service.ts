@@ -16,8 +16,6 @@ class ChatService {
     if (!participant) {
       throw ApiError.notFound('Participant not found');
     }
-
-    // Check if conversation already exists
     const existing = await conversationRepository.findByParticipants(
       userId,
       participantId
