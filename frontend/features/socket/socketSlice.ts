@@ -49,6 +49,9 @@ const socketSlice = createSlice({
         ].filter((u) => u.userId !== userId);
       }
     },
+    setOnlineUsers: (state, action: PayloadAction<string[]>) => {
+      state.onlineUsers = action.payload;
+    },
     setUserOnline: (state, action: PayloadAction<string>) => {
       if (!state.onlineUsers.includes(action.payload)) {
         state.onlineUsers.push(action.payload);
@@ -69,6 +72,7 @@ export const {
   setConnected,
   addTypingUser,
   removeTypingUser,
+  setOnlineUsers,
   setUserOnline,
   setUserOffline,
   clearTypingUsers,

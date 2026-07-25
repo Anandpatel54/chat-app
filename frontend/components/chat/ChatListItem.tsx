@@ -6,6 +6,7 @@ import { getOtherParticipant, truncateText } from '@/utils/helpers';
 import { formatChatListTime } from '@/utils/formatDate';
 import { cn } from '@/utils/cn';
 import { Badge } from '@/components/ui/badge';
+import { useAppSelector } from '@/redux/hooks';
 
 interface ChatListItemProps {
   conversation: IConversation;
@@ -24,6 +25,11 @@ export function ChatListItem({
     conversation.participants,
     currentUserId
   );
+
+  const onlineUsers = useAppSelector((state) => state.socket.onlineUsers);
+  const isOnline = otherParticipant
+    ? onlineUsers.includes(otherParticipant._id) || otherParticipant.isOnline
+    : false;
 
   const unreadCount = conversation.unreadCounts?.[currentUserId] || 0;
 
@@ -46,7 +52,7 @@ export function ChatListItem({
         src={otherParticipant?.profileImage || ''}
         name={otherParticipant?.name || 'User'}
         size="md"
-        isOnline={otherParticipant?.isOnline}
+        isOnline={isOnline}
       />
 
       <div className="flex-1 min-w-0">

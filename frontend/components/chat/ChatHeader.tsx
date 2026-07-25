@@ -31,6 +31,12 @@ export function ChatHeader() {
 
   const isTyping = typingUsers.length > 0;
 
+  // Use Redux onlineUsers as source of truth for real-time status
+  const onlineUsers = useAppSelector((state) => state.socket.onlineUsers);
+  const isOnline = otherParticipant
+    ? onlineUsers.includes(otherParticipant._id) || otherParticipant.isOnline
+    : false;
+
   return (
     <div className="h-16 border-b border-border/40 px-4 flex items-center justify-between bg-card">
       <div className="flex items-center gap-3">
@@ -49,7 +55,7 @@ export function ChatHeader() {
           src={otherParticipant?.profileImage || ''}
           name={otherParticipant?.name || 'User'}
           size="md"
-          isOnline={otherParticipant?.isOnline}
+          isOnline={isOnline}
         />
 
         <div className="flex flex-col text-left">
@@ -57,7 +63,7 @@ export function ChatHeader() {
             {otherParticipant?.name || 'User'}
           </span>
           <UserStatus
-            isOnline={otherParticipant?.isOnline || false}
+            isOnline={isOnline}
             lastSeen={otherParticipant?.lastSeen || ''}
             isTyping={isTyping}
             typingUserName={typingUsers[0]?.userName}

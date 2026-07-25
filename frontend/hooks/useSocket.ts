@@ -3,9 +3,9 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { setConnected, addTypingUser, removeTypingUser, setUserOnline, setUserOffline } from '@/features/socket/socketSlice';
+import { setConnected, addTypingUser, removeTypingUser, setOnlineUsers, setUserOnline, setUserOffline } from '@/features/socket/socketSlice';
 import { addMessage, markMessageAsDelivered, markMessageAsRead } from '@/features/message/messageSlice';
-import { updateConversation, updateParticipantOnlineStatus } from '@/features/chat/chatSlice';
+import { updateConversation, updateParticipantOnlineStatus, bulkUpdateParticipantsOnlineStatus } from '@/features/chat/chatSlice';
 import { SOCKET_EVENTS } from '@/constants/socketEvents';
 import toast from 'react-hot-toast';
 
@@ -146,6 +146,12 @@ export const useSocket = () => {
           lastSeen: data.lastSeen,
         })
       );
+    });
+
+    // Initial online users list (received on connect)
+    socket.on(SOCKET_EVENTS.ONLINE_USERS_LIST, (data: { onlineUsers: string[] }) => {
+      dispatch(setOnlineUsers(data.onlineUsers));
+      dispatch(bulkUpdateParticipantsOnlineStatus(data.onlineUsers));
     });
 
     return () => {

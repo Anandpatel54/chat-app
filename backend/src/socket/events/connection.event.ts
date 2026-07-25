@@ -21,6 +21,11 @@ export const handleConnection = (io: Server, socket: IAuthenticatedSocket) => {
     isOnline: true,
   });
 
+  // Send the full list of currently online users to the newly connected client
+  socket.emit(SOCKET_EVENTS.ONLINE_USERS_LIST, {
+    onlineUsers: Array.from(onlineUsers.keys()),
+  });
+
   console.log(`✅ User connected: ${userId} (Socket: ${socket.id})`);
 
   // Deliver any pending messages

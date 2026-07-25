@@ -119,6 +119,22 @@ const chatSlice = createSlice({
         });
       }
     },
+    bulkUpdateParticipantsOnlineStatus: (
+      state,
+      action: PayloadAction<string[]>
+    ) => {
+      const onlineUserIds = action.payload;
+      state.conversations.forEach((conv) => {
+        conv.participants.forEach((p) => {
+          p.isOnline = onlineUserIds.includes(p._id);
+        });
+      });
+      if (state.activeConversation) {
+        state.activeConversation.participants.forEach((p) => {
+          p.isOnline = onlineUserIds.includes(p._id);
+        });
+      }
+    },
   },
 });
 
@@ -135,6 +151,7 @@ export const {
   setChatLoading,
   setChatError,
   updateParticipantOnlineStatus,
+  bulkUpdateParticipantsOnlineStatus,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

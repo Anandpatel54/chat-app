@@ -11,4 +11,5 @@ export const SOCKET_EVENTS = {
   MESSAGE_SEEN: 'message_seen',
   USER_ONLINE: 'user_online',
   USER_OFFLINE: 'user_offline',
+  ONLINE_USERS_LIST: 'online_users_list',
 } as const;
