@@ -53,7 +53,6 @@ class FcmService {
         console.warn('Skipping FCM push send (Firebase Admin not initialized).');
       }
 
-      // Store notification in database
       await notificationRepository.create({
         userId: payload.receiverId,
         senderId: payload.senderId,
